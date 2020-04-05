@@ -1,0 +1,7 @@
+
+App\Entity\Article:
+  article_random_{1..10}:
+    title: <sentence(6,true)>
+    text: <paragraph(3,true)>
+    date: <dateTimeBetween('-10 years')>
+    frontpage: <numberBetween(0, 1)>

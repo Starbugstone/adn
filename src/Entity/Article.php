@@ -38,6 +38,11 @@ class Article
      */
     private $articleImages;
 
+    /**
+     * @ORM\Column(type="boolean")
+     */
+    private $frontpage;
+
     public function __construct()
     {
         $this->articleImages = new ArrayCollection();
@@ -111,6 +116,18 @@ class Article
                 $articleImage->setArticle(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getFrontpage(): ?bool
+    {
+        return $this->frontpage;
+    }
+
+    public function setFrontpage(bool $frontpage): self
+    {
+        $this->frontpage = $frontpage;
 
         return $this;
     }
