@@ -1,0 +1,10 @@
+parameters:
+  # generate using php bin/console security:encode-password
+  hash: $argon2id$v=19$m=65536,t=4,p=1$VHZGV3E1S3BVaGppaVlvUA$G0tv59EuMYDHOhoytTGeWfpwZduNUcFuJJ9JgHnT8S0
+
+App\Entity\User:
+  client_admin:
+    password: <{hash}>
+    email: 'admin@localhost.com'
+    roles:
+      - 'ROLE_ADMIN'
