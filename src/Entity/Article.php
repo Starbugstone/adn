@@ -43,9 +43,15 @@ class Article
      */
     private $frontpage;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\ArticleVideo", mappedBy="Article")
+     */
+    private $articleVideos;
+
     public function __construct()
     {
         $this->articleImages = new ArrayCollection();
+        $this->articleVideos = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -128,6 +134,37 @@ class Article
     public function setFrontpage(bool $frontpage): self
     {
         $this->frontpage = $frontpage;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection|ArticleVideo[]
+     */
+    public function getArticleVideos(): Collection
+    {
+        return $this->articleVideos;
+    }
+
+    public function addArticleVideo(ArticleVideo $articleVideo): self
+    {
+        if (!$this->articleVideos->contains($articleVideo)) {
+            $this->articleVideos[] = $articleVideo;
+            $articleVideo->setArticle($this);
+        }
+
+        return $this;
+    }
+
+    public function removeArticleVideo(ArticleVideo $articleVideo): self
+    {
+        if ($this->articleVideos->contains($articleVideo)) {
+            $this->articleVideos->removeElement($articleVideo);
+            // set the owning side to null (unless already changed)
+            if ($articleVideo->getArticle() === $this) {
+                $articleVideo->setArticle(null);
+            }
+        }
 
         return $this;
     }
