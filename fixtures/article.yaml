@@ -5,3 +5,10 @@ App\Entity\Article:
     text: <paragraph(3,true)>
     date: <dateTimeBetween('-10 years')>
     frontpage: <numberBetween(0, 1)>
+
+App\Entity\ArticleImage:
+  articleImage_{@article_random_*}:
+    article: <current()>
+    title: <sentence(6,true)>
+    image: <image('public/article_images', 640, 480, '', 0)>
+    updatedAt: <date_create()>

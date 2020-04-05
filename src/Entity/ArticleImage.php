@@ -24,12 +24,12 @@ class ArticleImage
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $file;
+    private $image;
 
     /**
      * @ORM\Column(type="date")
      */
-    private $date;
+    private $updatedAt;
 
     /**
      * @ORM\ManyToOne(targetEntity="App\Entity\Article", inversedBy="articleImages")
@@ -53,26 +53,26 @@ class ArticleImage
         return $this;
     }
 
-    public function getFile(): ?string
+    public function getImage(): ?string
     {
-        return $this->file;
+        return $this->image;
     }
 
-    public function setFile(string $file): self
+    public function setImage(string $image): self
     {
-        $this->file = $file;
+        $this->image = $image;
 
         return $this;
     }
 
-    public function getDate(): ?\DateTimeInterface
+    public function getUpdatedAt(): ?\DateTimeInterface
     {
-        return $this->date;
+        return $this->updatedAt;
     }
 
-    public function setDate(\DateTimeInterface $date): self
+    public function setUpdatedAt(\DateTimeInterface $date): self
     {
-        $this->date = $date;
+        $this->updatedAt = $date;
 
         return $this;
     }
